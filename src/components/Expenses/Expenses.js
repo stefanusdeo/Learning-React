@@ -1,27 +1,34 @@
 import Card from '../UI/Card';
-import ExpenseItem from '../Expenses/ExpenseItem';
 import '../Expenses/Expenses.css';
-import React from 'react';
+import React, { useState } from 'react';
+import ExpensesFilter from './ExpensesFilter';
+import ExpansesList from './ExpansesList';
+import ExpanseChart from './ExpanseChart';
 
 const Expenses = (props) => {
+  const [filterEnter, SetFilterEnter] = useState('2020');
+
+  function filterChange(selectedYear) {
+    SetFilterEnter(selectedYear);
+  }
+
+  const filterExpanses = props.items.filter((datas) => {
+    return datas.date.getFullYear().toString() === filterEnter;
+  });
+
   return (
-    <Card className='expenses'>
-      <ExpenseItem
-        title={props.items[0].keterangan}
-        harga={props.items[0].harga}
-        date={props.items[0].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={props.items[1].keterangan}
-        harga={props.items[1].harga}
-        date={props.items[1].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={props.items[2].keterangan}
-        harga={props.items[2].harga}
-        date={props.items[2].date}
-      ></ExpenseItem>
-    </Card>
+    <li>
+      <Card className='expenses'>
+        <div>
+          <ExpensesFilter
+            onChangeFilter={filterChange}
+            selected={filterEnter}
+          />
+        </div>
+        <ExpanseChart expanses={filterExpanses}/>
+        <ExpansesList items={filterExpanses} />
+      </Card>
+    </li>
   );
 };
 
