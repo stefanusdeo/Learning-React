@@ -7,19 +7,19 @@ const DummyDatas = [
   {
     id: '1',
     keterangan: 'Asuransi Mobil',
-    harga: 20.00,
+    harga: 20.0,
     date: new Date(2020, 2, 28),
   },
   {
     id: '2',
     keterangan: 'sekolah Anak',
-    harga: 50.00,
+    harga: 50.0,
     date: new Date(2021, 3, 28),
   },
   {
     id: '3',
     keterangan: 'Listrik',
-    harga: 15.00,
+    harga: 15.0,
     date: new Date(2021, 2, 2),
   },
 ];

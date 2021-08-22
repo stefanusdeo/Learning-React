@@ -72,7 +72,6 @@ const ExpensesForm = (props) => {
           <label>Amount</label>
           <input
             type='number'
-            min='10000'
             step='10000'
             value={amountEnter}
             onChange={amountHandler}
